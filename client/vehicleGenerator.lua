@@ -21,9 +21,12 @@ local function generateVehiclesInArea(state, coords, range)
 end
 
 CreateThread(function()
-    for _, data in ipairs(Config.RemoveVehiclesInArea) do
-        generateVehiclesInArea(false, data.coords, data.range)
+    for i = 1, #Config.RemoveVehiclesInArea do
+        generateVehiclesInArea(false, i.coords, i.range)
     end
+    -- for _, data in ipairs(Config.RemoveVehiclesInArea) do
+    --     generateVehiclesInArea(false, data.coords, data.range)
+    -- end
 end)
 
 export("generateVehiclesInArea", generateVehiclesInArea)
